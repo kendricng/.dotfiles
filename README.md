@@ -57,6 +57,15 @@ this script in `bin/`.
 ## todo
 Still figuring out how to best set up Brewfiles. It goes through all the installs as if it's a clean install but what if it was 1-2 apps already installed ahead of time?
 
+## How to Brewfile dump from current machine to new machine
+```
+brew bundle dump #to a Brewfile
+brew bundle install -- file /path #on the new machine
+```
+
+Source:
+https://apple.stackexchange.com/questions/410825/apple-silicon-port-all-homebrew-packages-under-usr-local-opt-to-opt-homebrew
+
 ## thanks
 I forked [Zach Holman](https://github.com/holman)'s excellent [dotfiles](https://github.com/holman/dotfiles) as a starting point. I don't want to overwhelm myself so I started from scratch, while breaking some of his scrips.
 

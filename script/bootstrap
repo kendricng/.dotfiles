@@ -146,8 +146,36 @@ install_dotfiles () {
   done
 }
 
+link_openjdk () {
+  local openjdk_dst="/Library/Java/JavaVirtualMachines/openjdk.jdk"
+
+  # Find the Homebrew installation directory
+  local homebrew_dir="$(brew --prefix)"
+
+  if [ -n "$homebrew_dir" ]
+  then
+    local openjdk_src="$homebrew_dir/opt/openjdk/libexec/openjdk.jdk"
+
+    if [ -e "$openjdk_src" ]
+    then
+      if [ -e "$openjdk_dst" ]
+      then
+        success "OpenJDK symlink already exists at $openjdk_dst"
+      else
+        sudo ln -sfn "$openjdk_src" "$openjdk_dst"
+        success "Symlinked OpenJDK to $openjdk_dst"
+      fi
+    else
+      error "OpenJDK is not installed. Please install it using Homebrew."
+    fi
+  else
+    error "Homebrew is not installed. Please install Homebrew to manage OpenJDK."
+  fi
+}
+
 #setup_gitconfig
 install_dotfiles
+link_openjdk
 
 # If macOS
 if [ "$(uname -s)" == "Darwin" ]

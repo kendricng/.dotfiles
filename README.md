@@ -1,4 +1,4 @@
-# Jupiter's take on dotfiles
+# Kendric's take on dotfiles
 
 As I venture into development, I've gone through at least a couple of Mac devices and Linux VMs. I'd like to keep my initial development setup into a minimum and make my dotfiles consistent across devices.
 
